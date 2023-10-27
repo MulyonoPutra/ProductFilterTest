@@ -1,0 +1,10 @@
+<div class="containers">
+  <app-size-number
+    *ngFor="let item of sizeNumbers"
+    [size]="item"
+    [isSelected]="item.id === selectedSize?.id"
+    (selected)="onSelect(item)">
+  </app-size-number>
+</div>
+
+<!-- <button (click)="submit()">submit</button> -->

@@ -1,0 +1,31 @@
+.selected {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background-color: #ffffff !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(8, 8, 8) !important;
+  border-radius: 10px;
+  border: 1px rgb(190, 186, 186) solid;
+  box-shadow: 5px 10px 8px #888888;
+}
+
+.box {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #F3F0F0;
+  color: gray;
+  border-radius: 10px;
+  border: 1px rgb(190, 186, 186) solid;
+}
