@@ -4,18 +4,18 @@
   >
     <div class="prod-title absolute left-[3rem] top-[1.5rem]">
       <div class="flex flex-col space-y-1">
-        <div><p class="text-2xl text-gray-400">Puma Shoes</p></div>
+        <div><p class="text-2xl text-gray-400">{{ product.category }}</p></div>
         <div>
           <p class="text-sm text-gray-900 font-bold">
-            The best shoes in the marketplace
+            {{ product.name }}
           </p>
         </div>
       </div>
     </div>
     <div class="prod-img">
       <img
-        src="https://res.cloudinary.com/damu971dt/image/upload/v1698331523/shoes/KD_Trey_5_VII_EP-removebg-preview_vjjnoh.png"
-        class="w-full object-cover object-center"
+        [src]="product.images"
+        class="w-full h-[280px] object-cover object-center"
       />
     </div>
     <div class="prod-info grid gap-10">
@@ -24,17 +24,17 @@
       >
         <div>
           <span> Price </span>
-          <p class="font-bold text-xl">$65</p>
+          <p class="font-bold text-xl">${{product.price}}</p>
         </div>
         <div class="flex space-x-2">
           <img
-            src="https://res.cloudinary.com/damu971dt/image/upload/v1698331523/shoes/KD_Trey_5_VII_EP-removebg-preview_vjjnoh.png"
+            [src]="product.images"
             class="rounded-lg border object-cover object-center"
             width="50"
             height="50"
           />
           <img
-            src="https://res.cloudinary.com/damu971dt/image/upload/v1698331523/shoes/KD_Trey_5_VII_EP-removebg-preview_vjjnoh.png"
+            [src]="product.images"
             class="rounded-lg border object-cover object-center"
             width="50"
             height="50"

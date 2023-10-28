@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { SizeNumber } from 'src/app/core/interfaces/list-of-size.interface';
@@ -13,6 +13,7 @@ import { SizeNumberComponent } from '../size-number/size-number.component';
 })
 export class ListOfSizeComponent {
   @Input() sizeNumbers!: SizeNumber[];
+  @Output() selected = new EventEmitter<SizeNumber[]>();
 
   selectedSize?: SizeNumber;
   selectedSizeNumbers: SizeNumber[] = [];
@@ -23,6 +24,7 @@ export class ListOfSizeComponent {
       this.selectedSizeNumbers.splice(index, 1);
     } else {
       this.selectedSizeNumbers.push(size);
+      this.selected.emit(this.selectedSizeNumbers);
     }
   }
 

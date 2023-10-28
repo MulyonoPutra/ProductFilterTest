@@ -26,7 +26,7 @@
                 </div>
               </mat-expansion-panel-header>
               <div class="flex flex-col space-y-1">
-                <mat-radio-group [(ngModel)]="selectedOptions" (change)="onRadioButtonChange($event)">
+                <mat-radio-group [(ngModel)]="selectedOptions" (change)="onSelectCategory($event)">
                   <div class="flex flex-col space-y-1 pl-2">
                     <mat-radio-button *ngFor="let category of categories" [value]="category">
                       <span [ngClass]="category === selectedOptions ? 'text-black' : 'text-gray-400'"
@@ -62,12 +62,12 @@
           <div class="px-6 py-4">
             <h1 class="text-base font-semibold">Size</h1>
             <div class="containers mt-6">
-              <app-list-of-size [sizeNumbers]="sizeCategories"></app-list-of-size>
+              <app-list-of-size [sizeNumbers]="sizeCategories" (selected)="onSelectedSize($event)"></app-list-of-size>
             </div>
           </div>
         </mat-card>
         <div class="w-full p-3">
-          <button (click)="submit()" type="button" class="apply-btn ">Apply Filter</button>
+          <button (click)="filterAll()" type="button" class="apply-btn ">Apply Filter</button>
         </div>
       </div>
       <div class="flex-1">
@@ -82,10 +82,9 @@
           </div>
 
           <div class="grid grid-cols-2 gap-8 max-h-[600px] overflow-scroll px-8 pb-8">
-            <app-card-product></app-card-product>
-            <app-card-product></app-card-product>
-            <app-card-product></app-card-product>
-            <app-card-product></app-card-product>
+            <div *ngFor="let product of products; let i = index">
+              <app-card-product [product]="product"></app-card-product>
+            </div>
           </div>
         </mat-card>
       </div>

@@ -1,5 +1,7 @@
+import { Component, Input } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Product } from 'src/app/core/interfaces/product';
 
 @Component({
   selector: 'app-card-product',
@@ -8,4 +10,6 @@ import { Component } from '@angular/core';
   templateUrl: './card-product.component.html',
   styleUrls: ['./card-product.component.scss']
 })
-export class CardProductComponent {}
+export class CardProductComponent {
+  @Input() product!: Product;
+}

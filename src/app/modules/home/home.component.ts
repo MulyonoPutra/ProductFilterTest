@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { HttpResponseEntity } from 'src/app/core/interfaces/http.response.entity';
 import { MatRadioChange } from '@angular/material/radio';
+import { Product } from 'src/app/core/interfaces/product';
 import { ProductService } from 'src/app/core/services/product.service';
 import { SIZE_NUMBER } from 'src/app/shared/utils/list-of-size';
 import { SizeNumber } from 'src/app/core/interfaces/list-of-size.interface';
@@ -8,10 +10,9 @@ import { SizeNumber } from 'src/app/core/interfaces/list-of-size.interface';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-
   protected max: number = 100;
   protected min: number = 0;
   protected categories!: string[];
@@ -22,57 +23,104 @@ export class HomeComponent implements OnInit {
   protected sizeNumbers!: SizeNumber[];
   protected selectedOptions!: string;
 
-  protected radioValue!: string;
+  protected selectedCategory!: string;
+  protected size: string[] = [];
+  protected products!: Product[];
 
-  constructor(private readonly productService: ProductService) { }
+  constructor(private readonly productService: ProductService) {}
 
   ngOnInit(): void {
-    this.findCategories()
-  }
-
-  onRadioButtonChange(event: MatRadioChange): void {
-    this.radioValue = event.value;
+    this.findAll();
+    this.findCategories();
   }
 
   findAll(): void {
-    this.productService.findAll().subscribe(data => {
-      console.log(data);
-    })
+    this.productService.findAll().subscribe({
+      next: (response: HttpResponseEntity<Product[]>) => {
+        this.products = response.data;
+      },
+    });
   }
 
   findCategories(): void {
-    this.productService.getAllCategories().subscribe(
+    this.productService.findAllCategories().subscribe({
+      next: (data: string[]) => {
+        this.categories = data;
+      },
+    });
+  }
+
+  onSelectCategory(event: MatRadioChange): void {
+    this.selectedCategory = event.value;
+  }
+
+  protected onSliderChange() {
+    // console.log({min: this.min, max: this.max});
+  }
+
+
+  public onSelectedSize(data: SizeNumber[]): void {
+    this.sizeNumbers = data;
+    this.sizeNumbers.forEach((value: SizeNumber) => {
+      this.size.push(value.number);
+    })
+  }
+
+  filterByCategory(){
+    this.productService.findByCategory(this.selectedCategory).subscribe(
       {
-        next: (data: string[]) => {
-          this.categories = data;
-        }
+        next: (response) => {
+          console.log(response);
+        },
       }
     )
   }
 
-  protected onSliderChange() {
-    console.log('Min:', this.min);
-    console.log('Max:', this.max);
+  filterByPriceRange(){
+    const priceRange = { minPrice: this.min, maxPrice: this.max }
+    this.productService.filterByPriceRange(priceRange).subscribe(
+      {
+        next: (response) => {
+          console.log(response);
+        },
+      }
+    )
   }
 
-  onSelect(size: SizeNumber) {
-    const index = this.selectedSizeArray.findIndex(cat => cat.id === size.id);
-    if (index !== -1) {
-      this.selectedSizeArray.splice(index, 1);
-    } else {
-      this.selectedSizeArray.push(size);
+  filterBySize(){
+    this.productService.filterBySize(this.size).subscribe(
+      {
+        next: (response) => {
+          console.log(response);
+        },
+      }
+    )
+  }
+
+  filterAll(){
+    let filters = {
+      category: this.selectedCategory,
+      priceRange: { minPrice: this.min, maxPrice: this.max },
+      selectedSizes: this.size
     }
+    this.productService.filterShoes(filters).subscribe({
+      next: (products: Product[]) => {
+        console.log(products);
+        this.products = products;
+      },
+    });
   }
 
-  submit(){
+  submit() {
     console.log({
-      category: this.radioValue,
+      category: this.selectedCategory,
       range: {
         min: this.min,
-        max: this.max
+        max: this.max,
       },
-      // TODO: pass data after choose size number from list-of-size and send to home component
-      size: []
-    })
+      size: this.sizeNumbers,
+    });
   }
+
+
 }

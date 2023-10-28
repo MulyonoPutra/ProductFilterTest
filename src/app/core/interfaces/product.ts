@@ -8,5 +8,5 @@ export interface Product {
   price: number;
   sizes: string[];
   colors: Color[];
-  video: string;
+  images: string;
 }

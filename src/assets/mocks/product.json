@@ -13,12 +13,6 @@
         "36",
         "37",
         "38",
-        "39",
-        "40",
-        "41",
-        "42",
-        "43",
-        "44",
         "45",
         "46",
         "47",
@@ -43,7 +37,7 @@
           "color_hash": "#F2C758"
         }
       ],
-      "video": "https://www.youtube.com/embed/lvfB_p0IiHM"
+      "images": "https://res.cloudinary.com/damu971dt/image/upload/v1698474908/shoes/nike-air-force-removebg-preview_wwluyu.png"
     },
     {
       "id": "234e5678-e89b-12d3-a456-426614174002",
@@ -75,7 +69,7 @@
           "color_hash": "#F2C758"
         }
       ],
-      "video": "https://www.youtube.com/embed/lvfB_p0IiHM"
+      "images": "https://res.cloudinary.com/damu971dt/image/upload/v1698474908/shoes/zoom-freak-removebg-preview_phwoza.png"
     },
     {
       "id": "345e5679-e89b-12d3-a456-426614174003",
@@ -92,13 +86,7 @@
         "40",
         "41",
         "42",
-        "43",
-        "44",
-        "45",
-        "46",
-        "47",
-        "48",
-        "49"
+        "43"
       ],
       "colors": [
         {
@@ -118,7 +106,7 @@
           "color_hash": "#F2C758"
         }
       ],
-      "video": "https://www.youtube.com/embed/lvfB_p0IiHM"
+      "images": "https://res.cloudinary.com/damu971dt/image/upload/v1698474908/shoes/jordan-delta-removebg-preview_zffgee.png"
     },
     {
       "id": "456e5670-e89b-12d3-a456-426614174004",
@@ -131,14 +119,6 @@
         "36",
         "37",
         "38",
-        "39",
-        "40",
-        "41",
-        "42",
-        "43",
-        "44",
-        "45",
-        "46",
         "47",
         "48",
         "49"
@@ -161,7 +141,7 @@
           "color_hash": "#F2C758"
         }
       ],
-      "video": "https://www.youtube.com/embed/lvfB_p0IiHM"
+      "images": "https://res.cloudinary.com/damu971dt/image/upload/v1698474909/shoes/kyrie-removebg-preview_f1bdar.png"
     },
     {
       "id": "567e5671-e89b-12d3-a456-426614174005",
@@ -177,10 +157,6 @@
         "39",
         "40",
         "41",
-        "42",
-        "43",
-        "44",
-        "45",
         "46",
         "47",
         "48",
@@ -200,7 +176,7 @@
           "color_hash": "#F2C758"
         }
       ],
-      "video": "https://www.youtube.com/embed/lvfB_p0IiHM"
+      "images": "https://res.cloudinary.com/damu971dt/image/upload/v1698475315/shoes/nike-air-zoom-removebg-preview_1_votdav.png"
     },
     {
       "id": "6678e5672-e89b-12d3-a456-426614174006",
@@ -210,10 +186,6 @@
       "price": 95.97,
       "sizes": [
         "35",
-        "36",
-        "37",
-        "38",
-        "39",
         "40",
         "41",
         "42",
@@ -239,7 +211,7 @@
           "color_hash": "#F2C758"
         }
       ],
-      "video": "https://www.youtube.com/embed/lvfB_p0IiHM"
+      "images": "https://res.cloudinary.com/damu971dt/image/upload/v1698474908/shoes/nike-air-edge-removebg-preview_raaps6.png"
     },
     {
       "id": "789e5673-e89b-12d3-a456-426614174007",
@@ -278,7 +250,7 @@
           "color_hash": "#6389CB"
         }
       ],
-      "video": "https://www.youtube.com/embed/lvfB_p0IiHM"
+      "images": "https://res.cloudinary.com/damu971dt/image/upload/v1698474908/shoes/kd13-ep-removebg-preview_lf8gfq.png"
     },
     {
       "id": "890e5674-e89b-12d3-a456-426614174008",
@@ -294,14 +266,7 @@
         "39",
         "40",
         "41",
-        "42",
-        "43",
-        "44",
-        "45",
-        "46",
-        "47",
-        "48",
-        "49"
+        "42"
       ],
       "colors": [
         {
@@ -321,7 +286,7 @@
           "color_hash": "#F2C758"
         }
       ],
-      "video": "https://www.youtube.com/embed/lvfB_p0IiHM"
+      "images": "https://res.cloudinary.com/damu971dt/image/upload/v1698474909/shoes/KD_Trey_5_VII_EP-removebg-preview_ho5yag.png"
     }
   ]
 }
