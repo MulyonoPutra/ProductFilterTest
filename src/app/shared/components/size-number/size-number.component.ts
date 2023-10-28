@@ -16,7 +16,7 @@ export class SizeNumberComponent {
 
 	@Output() selected = new EventEmitter();
 
-	onSelect() {
+	onSelect(): void {
 		this.isSelected = !this.isSelected;
 		this.selected.emit(this.isSelected);
 	}

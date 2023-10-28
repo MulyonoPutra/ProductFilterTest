@@ -17,9 +17,12 @@
 			</svg>
 		</div>
 		<input
-			name="search"
-			type="search"
-			id="default-search"
+			appSearch
+			[debounceTime]="500"
+			[minLength]="3"
+			(search)="onSearch($event)"
+			#input
+			type="text"
 			class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
 			placeholder="Search"
 			required />

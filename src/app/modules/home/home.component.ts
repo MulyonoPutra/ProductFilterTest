@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
 
 import { HttpResponseEntity } from 'src/app/core/interfaces/http.response.entity';
 import { MatRadioChange } from '@angular/material/radio';
@@ -12,7 +13,8 @@ import { SizeNumber } from 'src/app/core/interfaces/list-of-size.interface';
 	templateUrl: './home.component.html',
 	styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
+	private destroy = new Subject<void>();
 	protected max: number = 100;
 	protected min: number = 0;
 	protected categories!: string[];
@@ -34,23 +36,40 @@ export class HomeComponent implements OnInit {
 		this.findCategories();
 	}
 
-	findAll(): void {
-		this.productService.findAll().subscribe({
-			next: (response: HttpResponseEntity<Product[]>) => {
-				this.products = response.data;
-			},
-		});
+	/**
+	 * Find All Products
+    @returns Product[]
+	 */
+	public findAll(): void {
+		this.productService
+			.findAll()
+			.pipe(takeUntil(this.destroy))
+			.subscribe({
+				next: (response: HttpResponseEntity<Product[]>) => {
+					this.products = response.data;
+				},
+			});
 	}
 
-	findCategories(): void {
-		this.productService.findAllCategories().subscribe({
-			next: (data: string[]) => {
-				this.categories = data;
-			},
-		});
+	/**
+	 * Find All Categories
+    @returns string[]
+	 */
+	public findCategories(): void {
+		this.productService
+			.findAllCategories()
+			.pipe(takeUntil(this.destroy))
+			.subscribe({
+				next: (data: string[]) => {
+					this.categories = data;
+				},
+			});
 	}
 
-	onSelectCategory(event: MatRadioChange): void {
+	/**
+	 * Search category from radio button
+	 */
+	public onSelectCategory(event: MatRadioChange): void {
 		this.selectedCategory = event.value;
 	}
 
@@ -58,6 +77,25 @@ export class HomeComponent implements OnInit {
 		// console.log({min: this.min, max: this.max});
 	}
 
+	/**
+	 * Search product by name
+    @returns Product[]
+	 */
+	public onSearch(query: string): void {
+		console.log(query);
+		this.productService
+			.findByName(query)
+			.pipe(takeUntil(this.destroy))
+			.subscribe({
+				next: (products) => {
+					this.products = products;
+				},
+			});
+	}
+
+	/**
+	 * Selected list of size products
+	 */
 	public onSelectedSize(data: SizeNumber[]): void {
 		this.sizeNumbers = data;
 		this.sizeNumbers.forEach((value: SizeNumber) => {
@@ -65,53 +103,73 @@ export class HomeComponent implements OnInit {
 		});
 	}
 
-	filterByCategory() {
-		this.productService.findByCategory(this.selectedCategory).subscribe({
-			next: (response) => {
-				console.log(response);
-			},
-		});
+	/**
+	 * Unused Functions: Only used for filter data by Categories
+	 */
+	public filterByCategory(): void {
+		this.productService
+			.findByCategory(this.selectedCategory)
+			.pipe(takeUntil(this.destroy))
+			.subscribe({
+				next: (response) => {
+					console.log(response);
+				},
+			});
 	}
 
-	filterByPriceRange() {
+	/**
+	 * Unused Functions: Only used for filter data by Price Range
+	 */
+	public filterByPriceRange(): void {
 		const priceRange = { minPrice: this.min, maxPrice: this.max };
-		this.productService.filterByPriceRange(priceRange).subscribe({
-			next: (response) => {
-				console.log(response);
-			},
-		});
+		this.productService
+			.filterByPriceRange(priceRange)
+			.pipe(takeUntil(this.destroy))
+			.subscribe({
+				next: (response) => {
+					console.log(response);
+				},
+			});
 	}
 
-	filterBySize() {
-		this.productService.filterBySize(this.size).subscribe({
-			next: (response) => {
-				console.log(response);
-			},
-		});
+	/**
+	 * Unused Functions: Only used for filter data by Size
+	 */
+	public filterBySize(): void {
+		this.productService
+			.filterBySize(this.size)
+			.pipe(takeUntil(this.destroy))
+			.subscribe({
+				next: (response) => {
+					console.log(response);
+				},
+			});
 	}
 
-	filterAll() {
+	/**
+	 * Fiter by categories, price ranges and size ranges
+	 */
+	public filterAll(): void {
 		let filters = {
 			category: this.selectedCategory,
 			priceRange: { minPrice: this.min, maxPrice: this.max },
 			selectedSizes: this.size,
 		};
-		this.productService.filterShoes(filters).subscribe({
-			next: (products: Product[]) => {
-				console.log(products);
-				this.products = products;
-			},
-		});
+		this.productService
+			.filterShoes(filters)
+			.pipe(takeUntil(this.destroy))
+			.subscribe({
+				next: (products: Product[]) => {
+					this.products = products;
+				},
+			});
 	}
 
-	submit() {
-		console.log({
-			category: this.selectedCategory,
-			range: {
-				min: this.min,
-				max: this.max,
-			},
-			size: this.sizeNumbers,
-		});
+	/**
+	 * Unsubscribe to avoid memory leaks
+	 */
+	ngOnDestroy(): void {
+		this.destroy.next();
+		this.destroy.complete();
 	}
 }

@@ -6,6 +6,7 @@ import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { NgModule } from '@angular/core';
+import { SearchDirective } from 'src/app/shared/directives/search.directive';
 
 @NgModule({
 	declarations: [HomeComponent],
@@ -16,6 +17,7 @@ import { NgModule } from '@angular/core';
 		ComponentsModule,
 		FormsModule,
 		ReactiveFormsModule,
+		SearchDirective,
 	],
 })
 export class HomeModule {}

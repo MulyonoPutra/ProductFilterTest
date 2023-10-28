@@ -18,7 +18,7 @@ export class ListOfSizeComponent {
 	selectedSize?: SizeNumber;
 	selectedSizeNumbers: SizeNumber[] = [];
 
-	onSelect(size: SizeNumber) {
+	onSelect(size: SizeNumber): void {
 		const index = this.selectedSizeNumbers.findIndex(
 			(s) => s.id === size.id,
 		);
@@ -28,9 +28,5 @@ export class ListOfSizeComponent {
 			this.selectedSizeNumbers.push(size);
 			this.selected.emit(this.selectedSizeNumbers);
 		}
-	}
-
-	submit() {
-		console.log(this.selectedSizeNumbers);
 	}
 }

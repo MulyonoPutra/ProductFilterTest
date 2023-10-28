@@ -23,6 +23,16 @@ export class ProductService {
 		);
 	}
 
+	findByName(query: string): Observable<Product[]> {
+		return this.findAll().pipe(
+			map((response) =>
+				response.data.filter((product) =>
+					product.name.toLowerCase().includes(query.toLowerCase()),
+				),
+			),
+		);
+	}
+
 	findAllCategories(): Observable<string[]> {
 		return this.findAll().pipe(
 			map((response) => {

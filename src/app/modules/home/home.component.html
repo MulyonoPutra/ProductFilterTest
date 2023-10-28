@@ -6,7 +6,8 @@
 					<h1 class="text-base font-semibold">Shoe</h1>
 				</div>
 				<div class="col-span-2">
-					<app-search-form></app-search-form>
+					<app-search-form
+						(search)="onSearch($event)"></app-search-form>
 				</div>
 			</div>
 		</mat-card-content>
@@ -119,13 +120,23 @@
 						</div>
 					</div>
 
-					<div
-						class="grid grid-cols-2 gap-8 max-h-[600px] overflow-scroll px-8 pb-8">
-						<div *ngFor="let product of products; let i = index">
-							<app-card-product
-								[product]="product"></app-card-product>
+					<ng-container
+						*ngIf="products && products.length > 0; else NoData">
+						<div
+							class="grid grid-cols-2 gap-8 max-h-[600px] overflow-scroll px-8 pb-8">
+							<div
+								*ngFor="let product of products; let i = index">
+								<app-card-product
+									[product]="product"></app-card-product>
+							</div>
 						</div>
-					</div>
+					</ng-container>
+					<ng-template #NoData>
+						<div
+							class="text-center text-gray-500 flex mx-auto justify-center">
+							No products available.
+						</div>
+					</ng-template>
 				</mat-card>
 			</div>
 		</div>

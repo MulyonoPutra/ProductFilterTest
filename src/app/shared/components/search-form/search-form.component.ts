@@ -1,11 +1,21 @@
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { SearchDirective } from '../../directives/search.directive';
 
 @Component({
 	selector: 'app-search-form',
 	standalone: true,
-	imports: [CommonModule],
+	imports: [CommonModule, FormsModule, SearchDirective],
 	templateUrl: './search-form.component.html',
 	styleUrls: ['./search-form.component.scss'],
 })
-export class SearchFormComponent {}
+export class SearchFormComponent {
+	@Input() query!: string;
+	@Output() search = new EventEmitter<any>();
+
+	onSearch($event: any): void {
+		this.search.emit($event);
+	}
+}
