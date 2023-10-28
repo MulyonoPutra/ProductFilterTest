@@ -94,9 +94,9 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 		OverlayModule,
 		PortalModule,
 		ScrollingModule,
-    MatFormFieldModule,
-    MatInputModule,
-    CdkMenuModule,
+		MatFormFieldModule,
+		MatInputModule,
+		CdkMenuModule,
 	],
 	providers: [],
 })

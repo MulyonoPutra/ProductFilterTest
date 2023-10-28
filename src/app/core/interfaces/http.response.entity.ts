@@ -1,5 +1,5 @@
 export interface HttpResponseEntity<T> {
-  message: string;
-  statusCode: number;
-  data: T;
+	message: string;
+	statusCode: number;
+	data: T;
 }

@@ -1,4 +1,4 @@
 export interface Color {
-  name: string;
-  color_hash: string;
+	name: string;
+	color_hash: string;
 }

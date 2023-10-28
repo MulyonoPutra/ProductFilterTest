@@ -1,4 +1,4 @@
 export interface SizeNumber {
-  id: number;
-  number: string;
+	id: number;
+	number: string;
 }

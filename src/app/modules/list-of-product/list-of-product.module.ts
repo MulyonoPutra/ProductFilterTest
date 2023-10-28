@@ -7,13 +7,13 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
 import { NgModule } from '@angular/core';
 
 @NgModule({
-  declarations: [ListOfProductComponent],
-  imports: [
-    CommonModule,
-    ListOfProductRoutingModule,
-    MaterialModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
+	declarations: [ListOfProductComponent],
+	imports: [
+		CommonModule,
+		ListOfProductRoutingModule,
+		MaterialModule,
+		FormsModule,
+		ReactiveFormsModule,
+	],
 })
 export class ListOfProductModule {}

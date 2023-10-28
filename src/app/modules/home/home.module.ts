@@ -8,14 +8,14 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
 import { NgModule } from '@angular/core';
 
 @NgModule({
-  declarations: [HomeComponent],
-  imports: [
-    CommonModule,
-    HomeRoutingModule,
-    MaterialModule,
-    ComponentsModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
+	declarations: [HomeComponent],
+	imports: [
+		CommonModule,
+		HomeRoutingModule,
+		MaterialModule,
+		ComponentsModule,
+		FormsModule,
+		ReactiveFormsModule,
+	],
 })
 export class HomeModule {}

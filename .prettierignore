@@ -1,0 +1,20 @@
+# Ignore artifacts:
+node_modules
+build
+coverage
+yarn.lock
+tsconfig.json
+.eslintrc
+.eslintignore
+esbuild.js
+.env
+package.json
+.angular
+.vscode
+angular.json
+package-lock.json
+package.json
+tailwind.config.js
+tsconfig.spec.json
+.editorconfig
+.gitignore

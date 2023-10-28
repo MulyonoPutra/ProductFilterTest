@@ -5,30 +5,32 @@ import { SizeNumber } from 'src/app/core/interfaces/list-of-size.interface';
 import { SizeNumberComponent } from '../size-number/size-number.component';
 
 @Component({
-  selector: 'app-list-of-size',
-  standalone: true,
-  imports: [CommonModule, SizeNumberComponent],
-  templateUrl: './list-of-size.component.html',
-  styleUrls: ['./list-of-size.component.scss'],
+	selector: 'app-list-of-size',
+	standalone: true,
+	imports: [CommonModule, SizeNumberComponent],
+	templateUrl: './list-of-size.component.html',
+	styleUrls: ['./list-of-size.component.scss'],
 })
 export class ListOfSizeComponent {
-  @Input() sizeNumbers!: SizeNumber[];
-  @Output() selected = new EventEmitter<SizeNumber[]>();
+	@Input() sizeNumbers!: SizeNumber[];
+	@Output() selected = new EventEmitter<SizeNumber[]>();
 
-  selectedSize?: SizeNumber;
-  selectedSizeNumbers: SizeNumber[] = [];
+	selectedSize?: SizeNumber;
+	selectedSizeNumbers: SizeNumber[] = [];
 
-  onSelect(size: SizeNumber) {
-    const index = this.selectedSizeNumbers.findIndex((s) => s.id === size.id);
-    if (index !== -1) {
-      this.selectedSizeNumbers.splice(index, 1);
-    } else {
-      this.selectedSizeNumbers.push(size);
-      this.selected.emit(this.selectedSizeNumbers);
-    }
-  }
+	onSelect(size: SizeNumber) {
+		const index = this.selectedSizeNumbers.findIndex(
+			(s) => s.id === size.id,
+		);
+		if (index !== -1) {
+			this.selectedSizeNumbers.splice(index, 1);
+		} else {
+			this.selectedSizeNumbers.push(size);
+			this.selected.emit(this.selectedSizeNumbers);
+		}
+	}
 
-  submit() {
-    console.log(this.selectedSizeNumbers);
-  }
+	submit() {
+		console.log(this.selectedSizeNumbers);
+	}
 }
