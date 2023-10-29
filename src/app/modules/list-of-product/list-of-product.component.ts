@@ -29,6 +29,8 @@ export class ListOfProductComponent implements OnInit, OnDestroy {
 	protected size: string[] = [];
 	protected products!: Product[];
 
+  protected isDropdownOpened: boolean = false;
+
 	constructor(private readonly productService: ProductService) {}
 
 	ngOnInit(): void {
@@ -73,9 +75,33 @@ export class ListOfProductComponent implements OnInit, OnDestroy {
 		this.selectedCategory = event.value;
 	}
 
-	protected onSliderChange() {
+	protected onSliderChange(): void {
 		// console.log({min: this.min, max: this.max});
 	}
+
+  protected openDropdown(): void {
+    this.isDropdownOpened = !this.isDropdownOpened;
+  }
+
+  sortByLowest(): void {
+    this.productService.sortByLowest().pipe(takeUntil(this.destroy)).subscribe(
+      {
+        next: (products) => {
+					this.products = products;
+				},
+      }
+    )
+  }
+
+  sortByHighest(): void {
+    this.productService.sortByHighest().pipe(takeUntil(this.destroy)).subscribe(
+      {
+        next: (products) => {
+					this.products = products;
+				},
+      }
+    )
+  }
 
 	/**
 	 * Search product by name

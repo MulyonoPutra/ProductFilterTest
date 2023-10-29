@@ -101,3 +101,17 @@ mat-slider {
 .apply-btn {
 	@apply w-full px-3 ml-1 py-2.5 text-sm font-bold text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:ring-4 focus:ring-gray-200;
 }
+
+.dropdown-sort {
+  @apply absolute right-0 text-black text-sm font-bold px-5 py-2.5 text-center inline-flex items-center;
+}
+
+.dropdown {
+  &-menu {
+    @apply absolute right-2 top-[4.25rem] z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700;
+  }
+
+  &-sort {
+    @apply absolute right-0 text-black text-sm font-bold px-5 py-2.5 text-center inline-flex items-center;
+  }
+}
