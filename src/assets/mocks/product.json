@@ -10,13 +10,13 @@
 			"price": 30,
 			"sizes": ["35", "36", "37", "38", "45", "46", "47", "48", "49"],
 			"colors": [
+        {
+					"name": "Mistique Black",
+					"color_hash": "#272425"
+				},
 				{
 					"name": "Just Brown",
 					"color_hash": "#AA6159"
-				},
-				{
-					"name": "Mistique Black",
-					"color_hash": "#272425"
 				},
 				{
 					"name": "Sky Blue",
@@ -60,6 +60,10 @@
 			"price": 30,
 			"sizes": ["35", "36", "37", "38", "39", "40", "41", "42", "43"],
 			"colors": [
+        {
+          "name": "Sky Blue",
+          "color_hash": "#6389CB"
+        },
 				{
 					"name": "Just Brown",
 					"color_hash": "#AA6159"
@@ -67,10 +71,6 @@
 				{
 					"name": "Mistique Black",
 					"color_hash": "#272425"
-				},
-				{
-					"name": "Sky Blue",
-					"color_hash": "#6389CB"
 				},
 				{
 					"name": "Somewhat Gold",
@@ -126,13 +126,13 @@
 				"49"
 			],
 			"colors": [
+        {
+					"name": "Mistique Black",
+					"color_hash": "#272425"
+				},
 				{
 					"name": "Just Brown",
 					"color_hash": "#AA6159"
-				},
-				{
-					"name": "Mistique Black",
-					"color_hash": "#272425"
 				},
 				{
 					"name": "Somewhat Gold",
@@ -161,6 +161,10 @@
 				"49"
 			],
 			"colors": [
+        {
+					"name": "Just Brown",
+					"color_hash": "#AA6159"
+				},
 				{
 					"name": "Mistique Black",
 					"color_hash": "#272425"
@@ -223,6 +227,10 @@
 			"price": 56,
 			"sizes": ["35", "36", "37", "38", "39", "40", "41", "42"],
 			"colors": [
+        {
+					"name": "Sky Blue",
+					"color_hash": "#6389CB"
+				},
 				{
 					"name": "Just Brown",
 					"color_hash": "#AA6159"
@@ -230,10 +238,6 @@
 				{
 					"name": "Mistique Black",
 					"color_hash": "#272425"
-				},
-				{
-					"name": "Sky Blue",
-					"color_hash": "#6389CB"
 				},
 				{
 					"name": "Somewhat Gold",

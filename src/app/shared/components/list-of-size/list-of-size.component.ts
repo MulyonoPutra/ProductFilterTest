@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
-import { SizeNumber } from 'src/app/core/interfaces/list-of-size.interface';
+import { SizeNumber } from 'src/app/core/interfaces/size-number';
 import { SizeNumberComponent } from '../size-number/size-number.component';
 
 @Component({

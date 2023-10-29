@@ -6,7 +6,7 @@ import { MatRadioChange } from '@angular/material/radio';
 import { Product } from 'src/app/core/interfaces/product';
 import { ProductService } from 'src/app/core/services/product.service';
 import { SIZE_NUMBER } from 'src/app/shared/utils/list-of-size';
-import { SizeNumber } from 'src/app/core/interfaces/list-of-size.interface';
+import { SizeNumber } from 'src/app/core/interfaces/size-number';
 
 @Component({
 	selector: 'app-home',

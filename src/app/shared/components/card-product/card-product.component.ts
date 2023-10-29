@@ -12,4 +12,5 @@ import { Product } from 'src/app/core/interfaces/product';
 })
 export class CardProductComponent {
 	@Input() product!: Product;
+  @Input() borderColor!: string;
 }

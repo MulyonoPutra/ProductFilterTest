@@ -1,4 +1,4 @@
-import { SizeNumber } from 'src/app/core/interfaces/list-of-size.interface';
+import { SizeNumber } from 'src/app/core/interfaces/size-number';
 
 export const SIZE_NUMBER: SizeNumber[] = [
 	{ id: 0, number: '35' },
