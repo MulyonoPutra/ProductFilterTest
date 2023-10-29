@@ -3,12 +3,11 @@
 		<mat-card-content>
 			<div class="grid grid-cols-3 gap-4">
 				<div class="px-4 py-4">
-					<h1 class="text-base font-semibold">Shoe</h1>
+					<h1 class="text-xl font-semibold">Shoe Store</h1>
 				</div>
 				<div class="col-span-2">
-					<app-search-form
-						(search)="onSearch($event)">
-          </app-search-form>
+					<app-search-form (search)="onSearch($event)">
+					</app-search-form>
 				</div>
 			</div>
 		</mat-card-content>
@@ -128,7 +127,8 @@
 							class="grid grid-cols-2 gap-8 max-h-[600px] overflow-scroll px-8 pb-8">
 							<div
 								*ngFor="let product of products; let i = index">
-								<app-card-product [product]="product"></app-card-product>
+								<app-card-product
+									[product]="product"></app-card-product>
 							</div>
 						</div>
 					</ng-container>

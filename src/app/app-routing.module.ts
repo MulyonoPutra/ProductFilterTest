@@ -6,7 +6,9 @@ const routes: Routes = [
 	{
 		path: '',
 		loadChildren: () =>
-			import('./modules/list-of-product/list-of-product.module').then((m) => m.ListOfProductModule),
+			import('./modules/list-of-product/list-of-product.module').then(
+				(m) => m.ListOfProductModule,
+			),
 	},
 ];
 
