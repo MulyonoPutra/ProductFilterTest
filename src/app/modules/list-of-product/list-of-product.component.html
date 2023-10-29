@@ -1,0 +1,145 @@
+<div class="bg-gray-200 w-full p-4">
+	<mat-card class="h-[80px] w-3/4 mx-auto justify-center search-container">
+		<mat-card-content>
+			<div class="grid grid-cols-3 gap-4">
+				<div class="px-4 py-4">
+					<h1 class="text-base font-semibold">Shoe</h1>
+				</div>
+				<div class="col-span-2">
+					<app-search-form
+						(search)="onSearch($event)">
+          </app-search-form>
+				</div>
+			</div>
+		</mat-card-content>
+	</mat-card>
+
+	<mat-card class="w-3/4 mx-auto justify-center card-container">
+		<div class="flex">
+			<div class="flex-none w-1/4">
+				<mat-card class="card-borderless h-[50px]">
+					<mat-card-content></mat-card-content>
+				</mat-card>
+				<div class="w-full">
+					<mat-accordion multi>
+						<mat-expansion-panel>
+							<mat-expansion-panel-header>
+								<div class="">
+									<h1 class="text-base font-semibold">
+										Categories
+									</h1>
+								</div>
+							</mat-expansion-panel-header>
+							<div class="flex flex-col space-y-1">
+								<mat-radio-group
+									[(ngModel)]="selectedOptions"
+									(change)="onSelectCategory($event)">
+									<div class="flex flex-col space-y-1 pl-2">
+										<mat-radio-button
+											*ngFor="let category of categories"
+											[value]="category">
+											<span
+												[ngClass]="
+													category === selectedOptions
+														? 'text-black'
+														: 'text-gray-400'
+												"
+												class="text-sm font-semibold">
+												{{ category }}
+											</span>
+										</mat-radio-button>
+									</div>
+								</mat-radio-group>
+							</div>
+						</mat-expansion-panel>
+					</mat-accordion>
+				</div>
+				<mat-card class="card-borderless">
+					<div class="px-6 py-4">
+						<h1 class="text-base font-semibold mb-6">
+							Price Range
+						</h1>
+					</div>
+					<img
+						class="absolute bottom-[3.9rem] left-6"
+						src="../../../assets/svg/graph.svg"
+						height="200"
+						width="200"
+						alt="Graph" />
+					<mat-card-content>
+						<mat-slider min="0" max="100">
+							<input
+								[(ngModel)]="min"
+								matSliderStartThumb
+								(input)="onSliderChange()" />
+							<input
+								[(ngModel)]="max"
+								matSliderEndThumb
+								(input)="onSliderChange()" />
+						</mat-slider>
+					</mat-card-content>
+					<div class="flex justify-between px-4 mb-2">
+						<div class="order-first text-base font-semibold">
+							${{ min }}
+						</div>
+						<div></div>
+						<div class="order-last text-base font-semibold">
+							${{ max }}
+						</div>
+					</div>
+				</mat-card>
+				<mat-card class="card-borderless max-h-[250px]">
+					<div class="px-6 py-4">
+						<h1 class="text-base font-semibold">Size</h1>
+						<div class="containers mt-6">
+							<app-list-of-size
+								[sizeNumbers]="sizeCategories"
+								(selected)="
+									onSelectedSize($event)
+								"></app-list-of-size>
+						</div>
+					</div>
+				</mat-card>
+				<div class="w-full p-3">
+					<button
+						(click)="filterAll()"
+						type="button"
+						class="apply-btn">
+						Apply Filter
+					</button>
+				</div>
+			</div>
+			<div class="flex-1">
+				<mat-card class="bg-red-500 price-range-card">
+					<div class="flex justify-between px-8 py-8">
+						<div class="order-last">
+							<span class="text-sm font-semibold"
+								>Sort By Price</span
+							>
+						</div>
+						<div class="order-first">
+							<h1 class="text-xl font-semibold">New Arrivals</h1>
+						</div>
+					</div>
+
+					<ng-container
+						*ngIf="products && products.length > 0; else NoData">
+						<div
+							class="grid grid-cols-2 gap-8 max-h-[600px] overflow-scroll px-8 pb-8">
+							<div
+								*ngFor="let product of products; let i = index">
+								<app-card-product [product]="product"></app-card-product>
+							</div>
+						</div>
+					</ng-container>
+					<ng-template #NoData>
+						<div
+							class="text-center text-gray-500 flex mx-auto justify-center">
+							No products available.
+						</div>
+					</ng-template>
+				</mat-card>
+			</div>
+		</div>
+	</mat-card>
+</div>
