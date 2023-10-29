@@ -79,10 +79,16 @@ export class ListOfProductComponent implements OnInit, OnDestroy {
 		// console.log({min: this.min, max: this.max});
 	}
 
+	/**
+	 * Open and close dropdown sort
+	 */
 	protected openDropdown(): void {
 		this.isDropdownOpened = !this.isDropdownOpened;
 	}
 
+	/**
+	 * Sort product from the lowest price
+	 */
 	sortByLowest(): void {
 		this.productService
 			.sortByLowest()
@@ -94,6 +100,9 @@ export class ListOfProductComponent implements OnInit, OnDestroy {
 			});
 	}
 
+	/**
+	 * Sort product from the highest price
+	 */
 	sortByHighest(): void {
 		this.productService
 			.sortByHighest()
