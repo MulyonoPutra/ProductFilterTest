@@ -27,7 +27,7 @@ export class ProductService {
 
 	sortByLowest(): Observable<Product[]> {
 		return this.findAll().pipe(
-			map((response) => {
+			map((response: HttpResponseEntity<Product[]>) => {
 				return response.data.slice().sort((a, b) => a.price - b.price);
 			}),
 			catchError(this.handleError),
@@ -36,7 +36,7 @@ export class ProductService {
 
 	sortByHighest(): Observable<Product[]> {
 		return this.findAll().pipe(
-			map((response) => {
+			map((response: HttpResponseEntity<Product[]>) => {
 				return response.data.slice().sort((a, b) => b.price - a.price);
 			}),
 			catchError(this.handleError),
@@ -45,7 +45,7 @@ export class ProductService {
 
 	findByName(query: string): Observable<Product[]> {
 		return this.findAll().pipe(
-			map((response) =>
+			map((response: HttpResponseEntity<Product[]>) =>
 				response.data.filter((product) =>
 					product.name.toLowerCase().includes(query.toLowerCase()),
 				),
@@ -56,7 +56,7 @@ export class ProductService {
 
 	findAllCategories(): Observable<string[]> {
 		return this.findAll().pipe(
-			map((response) => {
+			map((response: HttpResponseEntity<Product[]>) => {
 				const categories: string[] = [];
 				response.data.forEach((shoe) => {
 					if (!categories.includes(shoe.category)) {
@@ -71,7 +71,7 @@ export class ProductService {
 
 	findByCategory(category: string): Observable<Product[]> {
 		return this.findAll().pipe(
-			map((response) =>
+			map((response: HttpResponseEntity<Product[]>) =>
 				response.data.filter((item) => item.category === category),
 			),
 			catchError(this.handleError),
@@ -83,7 +83,7 @@ export class ProductService {
 		maxPrice: number;
 	}): Observable<Product[]> {
 		return this.findAll().pipe(
-			map((response) =>
+			map((response: HttpResponseEntity<Product[]>) =>
 				response.data.filter(
 					(shoe) =>
 						shoe.price >= priceRange.minPrice &&
@@ -96,7 +96,7 @@ export class ProductService {
 
 	filterBySize(selectedSizes: string[]): Observable<Product[]> {
 		return this.findAll().pipe(
-			map((response) =>
+			map((response: HttpResponseEntity<Product[]>) =>
 				response.data.filter((shoe) =>
 					shoe.sizes.some((size) => selectedSizes.includes(size)),
 				),

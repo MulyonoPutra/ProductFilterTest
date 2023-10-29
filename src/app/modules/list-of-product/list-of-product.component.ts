@@ -86,6 +86,10 @@ export class ListOfProductComponent implements OnInit, OnDestroy {
 		this.isDropdownOpened = !this.isDropdownOpened;
 	}
 
+  refresh(): void {
+    window.location.reload();
+  }
+
 	/**
 	 * Sort product from the lowest price
 	 */

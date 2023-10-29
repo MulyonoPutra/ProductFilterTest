@@ -3,7 +3,7 @@
 		<mat-card-content>
 			<div class="grid grid-cols-3 gap-4">
 				<div class="px-4 py-4">
-					<h1 class="text-xl font-semibold">Shoe Store</h1>
+					<h1 class="text-xl font-semibold cursor-pointer" (click)="refresh()">Shoe Store</h1>
 				</div>
 				<div class="col-span-2">
 					<app-search-form (search)="onSearch($event)">
