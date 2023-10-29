@@ -19,12 +19,6 @@ export class ProductService {
 			.pipe(catchError(this.handleError));
 	}
 
-	findById(id: string): Observable<HttpResponseEntity<Product>> {
-		return this.http
-			.get<HttpResponseEntity<Product>>(`${this.mocks}/${id}`)
-			.pipe(catchError(this.handleError));
-	}
-
 	sortByLowest(): Observable<Product[]> {
 		return this.findAll().pipe(
 			map((response: HttpResponseEntity<Product[]>) => {
@@ -42,6 +36,25 @@ export class ProductService {
 			catchError(this.handleError),
 		);
 	}
+
+	sortByNameAsc(): Observable<Product[]> {
+		return this.findAll().pipe(
+			map((response: HttpResponseEntity<Product[]>) => {
+				return response.data
+					.slice()
+					.sort((a, b) => a.name.localeCompare(b.name));
+			}),
+		);
+	}
+
+  sortBySize(): Observable<Product[]> {
+    return this.findAll().pipe(
+      map((response: HttpResponseEntity<Product[]>) => {
+        return response.data.sort((a, b) => {
+          return a.sizes.length - b.sizes.length;
+        });
+      })
+  )}
 
 	findByName(query: string): Observable<Product[]> {
 		return this.findAll().pipe(

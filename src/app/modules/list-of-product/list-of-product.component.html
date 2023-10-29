@@ -116,7 +116,7 @@
 								(click)="openDropdown()"
 								class="dropdown-sort"
 								type="button">
-								Sort By Price
+								Sort By {{selectedSortTitle}}
 								<img
 									src="../../../assets/svg/icon-arrow.svg"
 									class="w-5 h-5 ml-2.5"
@@ -127,18 +127,11 @@
 								<div class="dropdown-menu">
 									<ul
 										class="py-2 text-sm text-gray-700 dark:text-gray-200">
-										<li>
+										<li *ngFor="let item of dropdownActions">
 											<a
-												(click)="sortByHighest()"
+												(click)="item.action(item.title)"
 												class="block px-4 py-2 hover:bg-gray-100 font-normal cursor-pointer"
-												>Highest</a
-											>
-										</li>
-										<li>
-											<a
-												(click)="sortByLowest()"
-												class="block px-4 py-2 hover:bg-gray-100 font-normal cursor-pointer"
-												>Lowest</a
+												>{{item.title}}</a
 											>
 										</li>
 									</ul>

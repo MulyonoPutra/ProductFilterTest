@@ -17,25 +17,80 @@ export class ListOfProductComponent implements OnInit, OnDestroy {
 	private destroy = new Subject<void>();
 	protected max: number = 100;
 	protected min: number = 0;
-	protected categories!: string[];
-	protected sizeCategories = SIZE_NUMBER;
+	protected isDropdownOpened: boolean = false;
 
 	protected selectedSize!: SizeNumber;
-	protected selectedSizeArray: SizeNumber[] = [];
 	protected sizeNumbers!: SizeNumber[];
-	protected selectedOptions!: string;
 
-	protected selectedCategory!: string;
 	protected size: string[] = [];
+	protected categories!: string[];
+  
 	protected products!: Product[];
 
-	protected isDropdownOpened: boolean = false;
+	protected selectedOptions!: string;
+	protected selectedCategory!: string;
+	protected selectedSortTitle!: string;
+
+	protected sizeCategories = SIZE_NUMBER;
+	dropdownActions = [
+		{
+			title: 'Name',
+			action: (title: string) => this.sortByName(title),
+		},
+		{
+			title: 'Price',
+			action: (title: string) => this.sortByLowestPrice(title),
+		},
+		{
+			title: 'Size',
+			action: (title: string) => this.sortBySize(title),
+		},
+	];
 
 	constructor(private readonly productService: ProductService) {}
 
 	ngOnInit(): void {
 		this.findAll();
 		this.findCategories();
+	}
+
+	sortByName(title: string) {
+		this.selectedSortTitle = title;
+		this.productService
+			.sortByNameAsc()
+			.pipe(takeUntil(this.destroy))
+			.subscribe({
+				next: (products: Product[]) => {
+					this.products = products;
+				},
+			});
+	}
+
+	sortBySize(title: string) {
+		this.selectedSortTitle = title;
+		this.productService
+			.sortBySize()
+			.pipe(takeUntil(this.destroy))
+			.subscribe({
+				next: (products: Product[]) => {
+					this.products = products;
+				},
+			});
+	}
+
+	/**
+	 * Sort product from the lowest price
+	 */
+	sortByLowestPrice(title: string): void {
+		this.selectedSortTitle = title!;
+		this.productService
+			.sortByLowest()
+			.pipe(takeUntil(this.destroy))
+			.subscribe({
+				next: (products) => {
+					this.products = products;
+				},
+			});
 	}
 
 	/**
@@ -86,22 +141,8 @@ export class ListOfProductComponent implements OnInit, OnDestroy {
 		this.isDropdownOpened = !this.isDropdownOpened;
 	}
 
-  refresh(): void {
-    window.location.reload();
-  }
-
-	/**
-	 * Sort product from the lowest price
-	 */
-	sortByLowest(): void {
-		this.productService
-			.sortByLowest()
-			.pipe(takeUntil(this.destroy))
-			.subscribe({
-				next: (products) => {
-					this.products = products;
-				},
-			});
+	refresh(): void {
+		window.location.reload();
 	}
 
 	/**
