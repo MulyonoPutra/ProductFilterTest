@@ -14,34 +14,34 @@ export class ProductService {
 	constructor(private http: HttpClient) {}
 
 	findAll(): Observable<HttpResponseEntity<Product[]>> {
-		return this.http.get<HttpResponseEntity<Product[]>>(`${this.mocks}`).pipe(catchError(this.handleError));;
+		return this.http
+			.get<HttpResponseEntity<Product[]>>(`${this.mocks}`)
+			.pipe(catchError(this.handleError));
 	}
 
 	findById(id: string): Observable<HttpResponseEntity<Product>> {
-		return this.http.get<HttpResponseEntity<Product>>(
-			`${this.mocks}/${id}`,
-		).pipe(catchError(this.handleError));;
+		return this.http
+			.get<HttpResponseEntity<Product>>(`${this.mocks}/${id}`)
+			.pipe(catchError(this.handleError));
 	}
 
-  sortByLowest(): Observable<Product[]> {
-    return this.findAll()
-    .pipe(
-        map((response) => {
-          return response.data.slice().sort((a, b) => a.price - b.price);
-        }),
-        catchError(this.handleError)
-      );
-  }
+	sortByLowest(): Observable<Product[]> {
+		return this.findAll().pipe(
+			map((response) => {
+				return response.data.slice().sort((a, b) => a.price - b.price);
+			}),
+			catchError(this.handleError),
+		);
+	}
 
-  sortByHighest(): Observable<Product[]> {
-    return this.findAll()
-    .pipe(
-        map((response) => {
-          return response.data.slice().sort((a, b) => b.price - a.price);
-        }),
-        catchError(this.handleError)
-      );
-  }
+	sortByHighest(): Observable<Product[]> {
+		return this.findAll().pipe(
+			map((response) => {
+				return response.data.slice().sort((a, b) => b.price - a.price);
+			}),
+			catchError(this.handleError),
+		);
+	}
 
 	findByName(query: string): Observable<Product[]> {
 		return this.findAll().pipe(
@@ -50,7 +50,7 @@ export class ProductService {
 					product.name.toLowerCase().includes(query.toLowerCase()),
 				),
 			),
-      catchError(this.handleError)
+			catchError(this.handleError),
 		);
 	}
 
@@ -65,7 +65,7 @@ export class ProductService {
 				});
 				return categories;
 			}),
-      catchError(this.handleError)
+			catchError(this.handleError),
 		);
 	}
 
@@ -74,7 +74,7 @@ export class ProductService {
 			map((response) =>
 				response.data.filter((item) => item.category === category),
 			),
-      catchError(this.handleError)
+			catchError(this.handleError),
 		);
 	}
 
@@ -90,7 +90,7 @@ export class ProductService {
 						shoe.price <= priceRange.maxPrice,
 				),
 			),
-      catchError(this.handleError)
+			catchError(this.handleError),
 		);
 	}
 
@@ -101,7 +101,7 @@ export class ProductService {
 					shoe.sizes.some((size) => selectedSizes.includes(size)),
 				),
 			),
-      catchError(this.handleError)
+			catchError(this.handleError),
 		);
 	}
 
@@ -138,11 +138,11 @@ export class ProductService {
 
 				return filteredShoes;
 			}),
-      catchError(this.handleError)
+			catchError(this.handleError),
 		);
 	}
 
-  public handleError(res: HttpErrorResponse) {
-    return throwError(() => new Error(res.error.message));
-  }
+	public handleError(res: HttpErrorResponse) {
+		return throwError(() => new Error(res.error.message));
+	}
 }

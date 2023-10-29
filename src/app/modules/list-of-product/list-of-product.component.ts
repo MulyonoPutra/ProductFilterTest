@@ -29,7 +29,7 @@ export class ListOfProductComponent implements OnInit, OnDestroy {
 	protected size: string[] = [];
 	protected products!: Product[];
 
-  protected isDropdownOpened: boolean = false;
+	protected isDropdownOpened: boolean = false;
 
 	constructor(private readonly productService: ProductService) {}
 
@@ -79,29 +79,31 @@ export class ListOfProductComponent implements OnInit, OnDestroy {
 		// console.log({min: this.min, max: this.max});
 	}
 
-  protected openDropdown(): void {
-    this.isDropdownOpened = !this.isDropdownOpened;
-  }
+	protected openDropdown(): void {
+		this.isDropdownOpened = !this.isDropdownOpened;
+	}
 
-  sortByLowest(): void {
-    this.productService.sortByLowest().pipe(takeUntil(this.destroy)).subscribe(
-      {
-        next: (products) => {
+	sortByLowest(): void {
+		this.productService
+			.sortByLowest()
+			.pipe(takeUntil(this.destroy))
+			.subscribe({
+				next: (products) => {
 					this.products = products;
 				},
-      }
-    )
-  }
+			});
+	}
 
-  sortByHighest(): void {
-    this.productService.sortByHighest().pipe(takeUntil(this.destroy)).subscribe(
-      {
-        next: (products) => {
+	sortByHighest(): void {
+		this.productService
+			.sortByHighest()
+			.pipe(takeUntil(this.destroy))
+			.subscribe({
+				next: (products) => {
 					this.products = products;
 				},
-      }
-    )
-  }
+			});
+	}
 
 	/**
 	 * Search product by name

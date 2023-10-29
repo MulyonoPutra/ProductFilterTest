@@ -103,15 +103,15 @@ mat-slider {
 }
 
 .dropdown-sort {
-  @apply absolute right-0 text-black text-sm font-bold px-5 py-2.5 text-center inline-flex items-center;
+	@apply absolute right-0 text-black text-sm font-bold px-5 py-2.5 text-center inline-flex items-center;
 }
 
 .dropdown {
-  &-menu {
-    @apply absolute right-2 top-[4.25rem] z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700;
-  }
+	&-menu {
+		@apply absolute right-2 top-[4.25rem] z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700;
+	}
 
-  &-sort {
-    @apply absolute right-0 text-black text-sm font-bold px-5 py-2.5 text-center inline-flex items-center;
-  }
+	&-sort {
+		@apply absolute right-0 text-black text-sm font-bold px-5 py-2.5 text-center inline-flex items-center;
+	}
 }
