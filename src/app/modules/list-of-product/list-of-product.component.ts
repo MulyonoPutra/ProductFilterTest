@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil, timer } from 'rxjs';
 
+import { DropdownActions } from 'src/app/core/interfaces/dropdown-actions';
 import { HttpResponseEntity } from 'src/app/core/interfaces/http.response.entity';
 import { MatRadioChange } from '@angular/material/radio';
 import { Product } from 'src/app/core/interfaces/product';
@@ -24,7 +25,7 @@ export class ListOfProductComponent implements OnInit, OnDestroy {
 
 	protected size: string[] = [];
 	protected categories!: string[];
-  
+
 	protected products!: Product[];
 
 	protected selectedOptions!: string;
@@ -32,7 +33,7 @@ export class ListOfProductComponent implements OnInit, OnDestroy {
 	protected selectedSortTitle!: string;
 
 	protected sizeCategories = SIZE_NUMBER;
-	dropdownActions = [
+	dropdownActions: DropdownActions[] = [
 		{
 			title: 'Name',
 			action: (title: string) => this.sortByName(title),
